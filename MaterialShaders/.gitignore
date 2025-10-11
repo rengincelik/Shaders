@@ -1,0 +1,15 @@
+# Unity generated folders (her proje için geçerli olacak)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+MemoryCaptures/
+
+# Asset store veya cache
+Assets/AssetStoreTools*
+
+# OS generated
+.DS_Store
+Thumbs.db
