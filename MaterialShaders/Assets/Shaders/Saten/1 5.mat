@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: w
+  m_Name: 1 5
   m_Shader: {fileID: 4800000, guid: 0194001965b22f84eaca4276546912ea, type: 3}
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 2100000, guid: 823ebb5c8805cfb419bade158dc02bd2, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -24,17 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _Anisotropy: 0.21
-    - _AnisotropyRotation: 0.407
-    - _FresnelPower: 5
-    - _IridescenceStrength: 0.15
-    - _MicroRoughness: 0.05
-    - _Sheen: 1.5
-    - _Smoothness: 0.95
-    m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SheenTint: {r: 1, g: 0.97999996, b: 0.95, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

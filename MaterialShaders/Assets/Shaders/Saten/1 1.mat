@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BasicColor2
-  m_Shader: {fileID: 4800000, guid: 766d32339f2d4c94ca9742690497a155, type: 3}
-  m_Parent: {fileID: 0}
+  m_Name: 1 1
+  m_Shader: {fileID: 4800000, guid: 0194001965b22f84eaca4276546912ea, type: 3}
+  m_Parent: {fileID: 2100000, guid: 823ebb5c8805cfb419bade158dc02bd2, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -24,8 +24,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _BaseColor: {r: 1, g: 0.52741086, b: 0, a: 1}
+    m_Floats:
+    - _Anisotropy: -0.63
+    - _AnisotropyRotation: 0.21
+    - _FresnelPower: 2.84
+    - _IridescenceStrength: 0.193
+    - _MicroRoughness: 0.099
+    - _Sheen: 0.63
+    - _Smoothness: 0.183
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
