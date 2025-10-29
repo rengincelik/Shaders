@@ -21,14 +21,14 @@ public class ShaderPropertyGridAnalyzerGizmos : MonoBehaviour
         public Color color = Color.white;
     }
 
-    private float[] mainColumnPercentages = { 0f, 0.25f, 0.5f, 0.75f, 1f };
-    private float[] subColumnPercentages = { 0f, 0.25f, 0.5f, 0.75f, 1f };
+    public float[] mainColumnPercentages = { 0f, 0.25f, 0.5f, 0.75f, 1f };
+    public float[] subColumnPercentages = { 0f, 0.25f, 0.5f, 0.75f, 1f };
 
-    private float rowSpacing = 3f;
-    private float subSpacing = 1.5f;
-    private float groupSpacing = 2.5f;
-    private float labelOffsetX = 1.5f;
-    private float labelOffsetY = 1.5f;
+    public float rowSpacing = 3f;
+    public float subSpacing = 1.5f;
+    public float groupSpacing = 2.5f;
+    public float labelOffsetX = 1.5f;
+    public float labelOffsetY = 1.5f;
 
 #if UNITY_EDITOR
     void OnValidate()

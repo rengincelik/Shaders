@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: w
-  m_Shader: {fileID: 4800000, guid: 0194001965b22f84eaca4276546912ea, type: 3}
+  m_Name: Custom_URPToonShader
+  m_Shader: {fileID: 4800000, guid: 727275cad0652d744bd5afe559af305e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,19 +22,16 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Anisotropy: 0.21
-    - _AnisotropyRotation: 0.407
-    - _FresnelPower: 5
-    - _IridescenceStrength: 0.15
-    - _MicroRoughness: 0.05
-    - _Sheen: 1.5
-    - _Smoothness: 0.95
+    - _ShadeSteps: 5
     m_Colors:
-    - _BaseColor: {r: 0, g: 1, b: 0, a: 1}
-    - _SheenTint: {r: 0, g: 1, b: 0, a: 1}
-    - _SpecularColor: {r: 0, g: 1, b: 0, a: 1}
+    - _BaseColor: {r: 0, g: 0.4918704, b: 1, a: 1}
+    - _LightDir: {r: 1, g: 1, b: -5, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
