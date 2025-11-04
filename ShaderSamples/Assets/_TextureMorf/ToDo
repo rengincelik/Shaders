@@ -1,0 +1,36 @@
+# 🌊 Organic Morphing Shader Project
+
+## 🎯 Amaç
+
+Organik, akışkan geçişli, renkli "generative art" tarzında bir **morphing arka plan animasyonu** oluşturmak. Görselin içinde şekiller birbirine dönüşür, akışkan biçimde evrilir, bir formun içinden başka bir form doğar.
+
+## 🧩 Teknik Hedef
+
+* Shader tamamen **kod tabanlı (HLSL)** olacak.
+* Shader Graph **kullanılmayacak**.
+* **Tek shader** içinde procedural morphing, renk geçişleri ve UV distortions yapılacak.
+* Arka plan olarak **full-screen quad** veya **UI RawImage** üzerinde çalışacak.
+
+## ⚙️ Bileşenler
+
+1. **MorphingShader** – Ana shader; noise, flow ve renk karışımlarını hesaplar.
+2. **Material Controller (C#)** – `_Time`, `_MorphStrength`, `_ColorShift` gibi parametreleri zamana göre değiştirir.
+3. (Opsiyonel) **Particle/Overlay Layer** – Ek efektler: ışık, parıltı, duman vb.
+
+## 🧠 Plan
+
+1. **Adım 1:** Noise + FlowField tabanlı procedural yüzey üretimi.
+2. **Adım 2:** İki noise alanı veya iki texture arasında akışkan morphing.
+3. **Adım 3:** Zamana bağlı renk geçişleri ve dalga hareketi.
+4. **Adım 4:** C# tarafında parametre animasyonu (lerp, sin, perlin).
+5. **Adım 5:** Gelişmiş varyant – Desenden yeni desenin doğması (mask + reveal logic).
+
+## 🧩 Ek Notlar
+
+* Noise türleri: Simplex veya Perlin.
+* GPU performansı için float precision, fragment shading.
+* HDR renkler veya bloom ile desteklenebilir.
+
+---
+
+Bu proje "generative background animation" altyapısı olarak kullanılabilir.
