@@ -10,17 +10,17 @@ Shader "Custom/URPWaterLit_BigWaveNoise"
         _ReflectionStrength("Reflection Strength", Range(0,1)) = 0.2
 
         // Büyük dalga parametreleri
-        _BigWaveAmplitude("Big Wave Amplitude", Float) = 1
-        _BigWaveFrequency("Big Wave Frequency", Float) = 0.3
-        _BigWaveSpeed("Big Wave Speed", Float) = 0.01
+        _BigWaveAmplitude("Big Wave Amplitude", Range(0,1)) = 1
+        _BigWaveFrequency("Big Wave Frequency", Range(0,1)) = 0.3
+        _BigWaveSpeed("Big Wave Speed", Range(0,1)) = 0.01
 
         // Noise kontrolleri
-        _NoiseScaleX("Noise Scale X", Float) = 1.0
-        _NoiseScaleZ("Noise Scale Z", Float) = 1.0
-        _NoiseScaleSpeed("Noise Scale Speed", Float) = 1.0
-        _NoiseAmplitudeX("Noise Amplitude X", Float) = 0.3
-        _NoiseAmplitudeZ("Noise Amplitude Z", Float) = 0.3
-        _NoiseAmplitudeSpeed("Noise Amplitude Speed", Float) = 0.5
+        _NoiseScaleX("Noise Scale X", Range(0,1)) = 1.0
+        _NoiseScaleZ("Noise Scale Z", Range(0,1)) = 1.0
+        _NoiseScaleSpeed("Noise Scale Speed", Range(0,1)) = 1.0
+        _NoiseAmplitudeX("Noise Amplitude X", Range(0,1)) = 0.3
+        _NoiseAmplitudeZ("Noise Amplitude Z",Range(0,1)) = 0.3
+        _NoiseAmplitudeSpeed("Noise Amplitude Speed", Range(0,1)) = 0.5
     }
 
     SubShader
@@ -163,3 +163,5 @@ Shader "Custom/URPWaterLit_BigWaveNoise"
         }
     }
 }
+
+

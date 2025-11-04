@@ -10,8 +10,8 @@ Shader "Custom/URPWaterLit_Noise"
         _Smoothness("Smoothness", Range(0,1)) = 0.5
         _SpecularStrength("Specular Strength", Range(0,1)) = 0.3
         _ReflectionStrength("Reflection Strength", Range(0,1)) = 0.2
-        _NoiseScale("Noise Scale", Float) = 1.0
-        _NoiseAmplitude("Noise Amplitude", Float) = 0.2
+        _NoiseScale("Noise Scale", Range(0,1)) = 1.0
+        _NoiseAmplitude("Noise Amplitude", Range(0,1)) = 0.2
     }
 
     SubShader

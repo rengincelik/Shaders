@@ -14,8 +14,8 @@ Shader "Custom/URPWaterLit_BigWaveNoiseSliders"
         _BigWaveSpeed("Big Wave Speed", Range(0,0.1)) = 0.01
 
         // Noise parametreleri
-        _NoiseScale("Noise Scale", Range(0,0.1)) = 0.05
-        _NoiseAmplitude("Noise Amplitude", Range(0,0.1)) = 0.2
+        _NoiseScale("Noise Scale", Range(0,1)) = 0.05
+        _NoiseAmplitude("Noise Amplitude", Range(0,1)) = 0.2
     }
 
     SubShader
