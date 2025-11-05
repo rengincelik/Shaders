@@ -33,7 +33,7 @@ Material:
     - _VelvetPower: 3.5
     - _VelvetStrength: 2.5
     m_Colors:
-    - _BaseColor: {r: 0.5, g: 0.09999997, b: 0.09999997, a: 1}
-    - _VelvetColor: {r: 1, g: 0.29999998, b: 0.29999998, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _VelvetColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
