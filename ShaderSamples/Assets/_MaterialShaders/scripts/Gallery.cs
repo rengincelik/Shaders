@@ -9,7 +9,9 @@ public class Gallery : MonoBehaviour
     [SerializeField] Shader[] shaders;
 
     [SerializeField] bool buildInEditor = false;
-
+     [SerializeField]  float shaderSpacing = 10f;
+     [SerializeField]   float prefabSpacing = 3f;
+     [SerializeField]   float colorSpacing = 1.5f;
     Color[] colors;
 
     void InitializeColors()
@@ -51,9 +53,7 @@ public class Gallery : MonoBehaviour
         while (transform.childCount > 0)
             DestroyImmediate(transform.GetChild(0).gameObject);
 
-        float shaderSpacing = 10f;
-        float prefabSpacing = 3f;
-        float colorSpacing = 1.5f;
+
 
         for (int s = 0; s < shaders.Length; s++)
         {
@@ -62,7 +62,7 @@ public class Gallery : MonoBehaviour
 
             GameObject shaderParent = new GameObject(shader.name + "_Group");
             shaderParent.transform.SetParent(transform, false);
-            shaderParent.transform.localPosition = new Vector3(s * shaderSpacing, 0, 0);
+            shaderParent.transform.localPosition = new Vector3( 0,s * shaderSpacing, 0);
 
             for (int p = 0; p < prefabs.Length; p++)
             {
