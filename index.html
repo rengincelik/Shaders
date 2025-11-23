@@ -92,9 +92,9 @@
         }
         
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             margin-top: 30px;
         }
         
@@ -104,19 +104,29 @@
             border: 1px solid #252525;
             overflow: hidden;
             transition: all 0.3s;
-            cursor: pointer;
         }
         
         .project-card:hover {
             border-color: #00d4ff;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.15);
         }
         
         .project-header {
             padding: 20px;
             background: rgba(0, 212, 255, 0.05);
-            border-bottom: 1px solid #252525;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .project-header:hover {
+            background: rgba(0, 212, 255, 0.08);
+        }
+        
+        .project-header-content {
+            flex: 1;
         }
         
         .project-header h3 {
@@ -135,8 +145,27 @@
             margin-top: 5px;
         }
         
+        .accordion-icon {
+            font-size: 1.5em;
+            color: #00d4ff;
+            transition: transform 0.3s;
+            user-select: none;
+        }
+        
+        .accordion-icon.active {
+            transform: rotate(180deg);
+        }
+        
         .project-body {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease-out;
+        }
+        
+        .project-body.active {
             padding: 20px;
+            max-height: 1000px;
         }
         
         .project-body p {
@@ -242,7 +271,6 @@
             header h1 { font-size: 2em; }
             header p { font-size: 1.1em; }
             section { padding: 25px; }
-            .project-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -256,6 +284,17 @@
         <a href="https://github.com/rengincelik">GitHub Profile</a>
     </nav>
 </header>
+
+<script>
+function toggleAccordion(header) {
+    const body = header.nextElementSibling;
+    const icon = header.querySelector('.accordion-icon');
+    
+    // Toggle current accordion
+    body.classList.toggle('active');
+    icon.classList.toggle('active');
+}
+</script>
 
 <div class="container">
     <section>
@@ -288,9 +327,12 @@
         <div class="project-grid">
             <!-- Silk Shader -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Silk Material Shader</h3>
-                    <span class="project-type">Advanced PBR</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Silk Material Shader</h3>
+                        <span class="project-type">Advanced PBR</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Physically-based silk material with anisotropic reflections, iridescence effects, and sheen properties for realistic fabric rendering.</p>
@@ -314,9 +356,12 @@
 
             <!-- Velvet Shader -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Velvet Material Shader</h3>
-                    <span class="project-type">Fabric Rendering</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Velvet Material Shader</h3>
+                        <span class="project-type">Fabric Rendering</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Advanced velvet shader featuring rim lighting, subsurface scattering, and fuzz scatter effects for soft fabric materials.</p>
@@ -339,9 +384,12 @@
 
             <!-- Lit Surface Shader -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Advanced Surface Shader</h3>
-                    <span class="project-type">Versatile PBR</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Advanced Surface Shader</h3>
+                        <span class="project-type">Versatile PBR</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Highly configurable surface shader with metallic, glossy, roughness, and matte modes for versatile material creation.</p>
@@ -364,9 +412,12 @@
 
             <!-- Water Surface Shader -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Water Surface Shader</h3>
-                    <span class="project-type">Procedural FX</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Water Surface Shader</h3>
+                        <span class="project-type">Procedural FX</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Dynamic water surface with vertex displacement, procedural waves, and depth-based coloring for realistic water effects.</p>
@@ -389,9 +440,12 @@
 
             <!-- Water Reflection Shader -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Water Reflection Shader</h3>
-                    <span class="project-type">Screen Effect</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Water Reflection Shader</h3>
+                        <span class="project-type">Screen Effect</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Screen-space water reflection with animated wave distortion and highlight stripes for dynamic water surfaces.</p>
@@ -420,9 +474,12 @@
         <div class="project-grid">
             <!-- Gallery Maker -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Shader Gallery Maker</h3>
-                    <span class="project-type">Editor Tool</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Shader Gallery Maker</h3>
+                        <span class="project-type">Editor Tool</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Automated shader property visualization system that generates grids of objects with varying shader parameters for testing and comparison.</p>
@@ -445,9 +502,12 @@
 
             <!-- Object Gallery Maker -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Vertex Count Gallery</h3>
-                    <span class="project-type">Performance Testing</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Vertex Count Gallery</h3>
+                        <span class="project-type">Performance Testing</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Generates plane meshes with specific vertex counts for testing shader performance across different mesh complexities.</p>
@@ -470,9 +530,12 @@
 
             <!-- Multi-Shader Gallery -->
             <div class="project-card">
-                <div class="project-header">
-                    <h3>Multi-Shader Gallery</h3>
-                    <span class="project-type">Comparison Tool</span>
+                <div class="project-header" onclick="toggleAccordion(this)">
+                    <div class="project-header-content">
+                        <h3>Multi-Shader Gallery</h3>
+                        <span class="project-type">Comparison Tool</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
                 <div class="project-body">
                     <p>Creates comprehensive galleries showing multiple shaders applied to multiple prefabs with various color variations.</p>
