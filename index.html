@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Shader Samples - Rengin Çelik</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 2px solid #00d4ff;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        header p {
+            font-size: 1.3em;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        
+        nav {
+            margin-top: 30px;
+        }
+        
+        nav a {
+            color: #00d4ff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        section {
+            margin-bottom: 60px;
+            background: #151515;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #252525;
+            transition: all 0.3s;
+        }
+        
+        section:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+        }
+        
+        h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #00d4ff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #252525;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .project-header {
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.05);
+            border-bottom: 1px solid #252525;
+        }
+        
+        .project-header h3 {
+            color: #00d4ff;
+            font-size: 1.4em;
+            margin-bottom: 8px;
+        }
+        
+        .project-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.85em;
+            color: #00d4ff;
+            margin-top: 5px;
+        }
+        
+        .project-body {
+            padding: 20px;
+        }
+        
+        .project-body p {
+            color: #b0b0b0;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .tech-tag {
+            padding: 4px 10px;
+            background: #252525;
+            border-radius: 4px;
+            font-size: 0.8em;
+            color: #888;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .features-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 8px;
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .features-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-size: 1.2em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-box {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #252525;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        footer {
+            background: #0a0a0a;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #252525;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-links a {
+            color: #00d4ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .contact-links a:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            header p { font-size: 1.1em; }
+            section { padding: 25px; }
+            .project-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Unity Shader Samples</h1>
+    <p>Advanced Material Shaders & Visual Effects for URP</p>
+    <nav>
+        <a href="https://rengincelik.github.io/RenginCelik/">← Back to Portfolio</a>
+        <a href="https://github.com/rengincelik">GitHub Profile</a>
+    </nav>
+</header>
+
+<div class="container">
+    <section>
+        <h2>📊 Project Overview</h2>
+        <p>Professional collection of Unity URP shaders showcasing advanced material rendering techniques including surface properties, procedural effects, and automated gallery systems for shader testing and visualization.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Custom Shaders</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">URP</div>
+                <div class="stat-label">Rendering Pipeline</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">HLSL</div>
+                <div class="stat-label">Shader Language</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Gallery Tools</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🎨 Material Shaders</h2>
+        
+        <div class="project-grid">
+            <!-- Silk Shader -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Silk Material Shader</h3>
+                    <span class="project-type">Advanced PBR</span>
+                </div>
+                <div class="project-body">
+                    <p>Physically-based silk material with anisotropic reflections, iridescence effects, and sheen properties for realistic fabric rendering.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Anisotropic GGX</span>
+                        <span class="tech-tag">Fresnel</span>
+                        <span class="tech-tag">Iridescence</span>
+                        <span class="tech-tag">Sheen BRDF</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>Anisotropic specular with rotation control</li>
+                        <li>Customizable sheen intensity and tint</li>
+                        <li>Iridescence effect with strength control</li>
+                        <li>Micro-roughness surface detail</li>
+                        <li>Multiple light support with shadows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Velvet Shader -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Velvet Material Shader</h3>
+                    <span class="project-type">Fabric Rendering</span>
+                </div>
+                <div class="project-body">
+                    <p>Advanced velvet shader featuring rim lighting, subsurface scattering, and fuzz scatter effects for soft fabric materials.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Velvet BRDF</span>
+                        <span class="tech-tag">SSS</span>
+                        <span class="tech-tag">Procedural Noise</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>Custom velvet BRDF with rim lighting</li>
+                        <li>Fuzz scatter for soft material look</li>
+                        <li>Subsurface scattering simulation</li>
+                        <li>Anisotropic specular highlights</li>
+                        <li>Micro-detail surface perturbation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lit Surface Shader -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Advanced Surface Shader</h3>
+                    <span class="project-type">Versatile PBR</span>
+                </div>
+                <div class="project-body">
+                    <p>Highly configurable surface shader with metallic, glossy, roughness, and matte modes for versatile material creation.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Multi-Mode</span>
+                        <span class="tech-tag">Procedural Roughness</span>
+                        <span class="tech-tag">Shadow Integration</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>4 surface modes: Glossy, Rough, Matte, Hybrid</li>
+                        <li>Procedural roughness with noise layers</li>
+                        <li>Flat surface mode for hard materials</li>
+                        <li>Adjustable ambient and shadow intensity</li>
+                        <li>Fog support and shadow casting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Water Surface Shader -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Water Surface Shader</h3>
+                    <span class="project-type">Procedural FX</span>
+                </div>
+                <div class="project-body">
+                    <p>Dynamic water surface with vertex displacement, procedural waves, and depth-based coloring for realistic water effects.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Vertex Displacement</span>
+                        <span class="tech-tag">Wave Simulation</span>
+                        <span class="tech-tag">Normal Calculation</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>Procedural wave generation with noise</li>
+                        <li>Dynamic normal calculation for lighting</li>
+                        <li>Depth-based color gradient</li>
+                        <li>Fresnel reflection effect</li>
+                        <li>Adjustable wave parameters (amplitude, frequency, speed)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Water Reflection Shader -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Water Reflection Shader</h3>
+                    <span class="project-type">Screen Effect</span>
+                </div>
+                <div class="project-body">
+                    <p>Screen-space water reflection with animated wave distortion and highlight stripes for dynamic water surfaces.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">UV Distortion</span>
+                        <span class="tech-tag">Screen Space</span>
+                        <span class="tech-tag">Built-in RP</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>Sine wave UV distortion</li>
+                        <li>Animated highlight stripes</li>
+                        <li>Configurable wave parameters</li>
+                        <li>Time-based animation</li>
+                        <li>Simple and performant</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🛠️ Gallery & Testing Tools</h2>
+        
+        <div class="project-grid">
+            <!-- Gallery Maker -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Shader Gallery Maker</h3>
+                    <span class="project-type">Editor Tool</span>
+                </div>
+                <div class="project-body">
+                    <p>Automated shader property visualization system that generates grids of objects with varying shader parameters for testing and comparison.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Editor Script</span>
+                        <span class="tech-tag">Property Analysis</span>
+                        <span class="tech-tag">ProBuilder Support</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>Automatic shader property detection</li>
+                        <li>2D grid generation (main × sub columns)</li>
+                        <li>Color property management</li>
+                        <li>Scene gizmo labels with property names</li>
+                        <li>ProBuilder mesh integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Object Gallery Maker -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Vertex Count Gallery</h3>
+                    <span class="project-type">Performance Testing</span>
+                </div>
+                <div class="project-body">
+                    <p>Generates plane meshes with specific vertex counts for testing shader performance across different mesh complexities.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">ProBuilder API</span>
+                        <span class="tech-tag">Mesh Generation</span>
+                        <span class="tech-tag">Performance Testing</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>Target vertex count generation</li>
+                        <li>Automatic segment calculation</li>
+                        <li>Procedural plane creation</li>
+                        <li>Debug vertex count display</li>
+                        <li>Material assignment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Multi-Shader Gallery -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Multi-Shader Gallery</h3>
+                    <span class="project-type">Comparison Tool</span>
+                </div>
+                <div class="project-body">
+                    <p>Creates comprehensive galleries showing multiple shaders applied to multiple prefabs with various color variations.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Batch Generation</span>
+                        <span class="tech-tag">Prefab Support</span>
+                        <span class="tech-tag">Color Matrix</span>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>Multiple shader comparison</li>
+                        <li>Prefab instancing support</li>
+                        <li>9 predefined color variations</li>
+                        <li>Hierarchical organization</li>
+                        <li>Customizable spacing parameters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>⚙️ Technical Features</h2>
+        <div class="project-grid">
+            <div class="stat-box" style="text-align: left;">
+                <h3 style="color: #00d4ff; margin-bottom: 15px;">Rendering Features</h3>
+                <ul class="features-list">
+                    <li>Universal Render Pipeline (URP) compatible</li>
+                    <li>Shadow casting and receiving</li>
+                    <li>Multiple light support</li>
+                    <li>Fog integration</li>
+                    <li>Custom BRDF implementations</li>
+                </ul>
+            </div>
+            <div class="stat-box" style="text-align: left;">
+                <h3 style="color: #00d4ff; margin-bottom: 15px;">Shader Techniques</h3>
+                <ul class="features-list">
+                    <li>Procedural noise generation</li>
+                    <li>Anisotropic reflections</li>
+                    <li>Fresnel effects</li>
+                    <li>Vertex displacement</li>
+                    <li>Normal perturbation</li>
+                </ul>
+            </div>
+            <div class="stat-box" style="text-align: left;">
+                <h3 style="color: #00d4ff; margin-bottom: 15px;">Editor Tools</h3>
+                <ul class="features-list">
+                    <li>ExecuteInEditMode support</li>
+                    <li>Scene Gizmos visualization</li>
+                    <li>Automatic property detection</li>
+                    <li>Prefab instantiation</li>
+                    <li>Material generation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>📚 Technical Stack</h2>
+        <div class="tech-tags" style="gap: 15px;">
+            <span class="tech-tag" style="padding: 10px 20px; font-size: 1em;">Unity URP</span>
+            <span class="tech-tag" style="padding: 10px 20px; font-size: 1em;">HLSL</span>
+            <span class="tech-tag" style="padding: 10px 20px; font-size: 1em;">ProBuilder</span>
+            <span class="tech-tag" style="padding: 10px 20px; font-size: 1em;">C# Editor Scripting</span>
+            <span class="tech-tag" style="padding: 10px 20px; font-size: 1em;">PBR Lighting</span>
+            <span class="tech-tag" style="padding: 10px 20px; font-size: 1em;">Procedural Generation</span>
+            <span class="tech-tag" style="padding: 10px 20px; font-size: 1em;">Scene Gizmos</span>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>📬 Contact</h2>
+        <p style="font-size: 1.1em; margin-bottom: 20px;">Interested in custom shader development or technical art solutions?</p>
+        <div style="margin: 20px 0;">
+            <p>📞 +90 538 968 69 77</p>
+            <p>✉️ <a href="mailto:rengin.celik97@gmail.com" style="color: #00d4ff; text-decoration: none;">rengin.celik97@gmail.com</a></p>
+            <p>🌍 Istanbul, Turkey</p>
+        </div>
+        
+        <div class="contact-links">
+            <a href="https://linkedin.com/in/rengincelik" target="_blank">LinkedIn</a>
+            <a href="https://github.com/rengincelik" target="_blank">GitHub</a>
+            <a href="https://rengincelik.itch.io" target="_blank">itch.io</a>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>© 2025 Rengin Çelik - Game Developer & Technical Artist</p>
+    <p style="margin-top: 10px; color: #666;">Specialized in Unity Shader Development & Visual Effects</p>
+</footer>
+
+</body>
+</html>
