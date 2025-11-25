@@ -189,6 +189,32 @@
             color: #888;
         }
 
+        .tool-image {
+            width: 100%;
+            height: 200px;
+            background: #252525;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+        }
+        .tool-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* resim tamamen sığar */
+            display: block;
+        }
+
+        .tool-image video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
         .features-list {
             list-style: none;
             margin: 15px 0;
@@ -336,7 +362,10 @@ function toggleAccordion(header) {
                 </div>
                 <div class="project-body">
                     <p>Physically-based silk material with anisotropic reflections, iridescence effects, and sheen properties for realistic fabric rendering.</p>
-                    <div class="tool-image">Screenshot / GIF Placeholder</div>
+                    <div class="tool-image">
+                        <img src="https://raw.githubusercontent.com/rengincelik/Shaders/main/ShaderSamples/Recordings/BasicURP_SilkShader.png" alt="">
+                    </div>
+
                     <div class="tech-tags">
                         <span class="tech-tag">Anisotropic GGX</span>
                         <span class="tech-tag">Fresnel</span>
@@ -365,6 +394,9 @@ function toggleAccordion(header) {
                 </div>
                 <div class="project-body">
                     <p>Advanced velvet shader featuring rim lighting, subsurface scattering, and fuzz scatter effects for soft fabric materials.</p>
+                    <div class="tool-image">
+                        <img src="https://raw.githubusercontent.com/rengincelik/Shaders/main/ShaderSamples/Recordings/BasicURP_VelvetShader.png" alt="">
+                    </div>
 
                     <div class="tech-tags">
                         <span class="tech-tag">Velvet BRDF</span>
@@ -393,6 +425,9 @@ function toggleAccordion(header) {
                 </div>
                 <div class="project-body">
                     <p>Highly configurable surface shader with metallic, glossy, roughness, and matte modes for versatile material creation.</p>
+                    <div class="tool-image">
+                        <img src= "https://raw.githubusercontent.com/rengincelik/Shaders/main/ShaderSamples/Recordings/BasicLit_AdvancedSurface.png" alt="">
+                    </div>
 
                     <div class="tech-tags">
                         <span class="tech-tag">Multi-Mode</span>
